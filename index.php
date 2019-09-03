@@ -8,7 +8,7 @@ Author: 老部落（By:老赵）
 Author URI: https://www.laobuluo.com
 */
 
-define('WPReplace_INDEXFILE', 'WPReplace.php');
+define('WPReplace_INDEXFILE', 'WPReplace/index.php');
 
 add_action('admin_menu', 'wprelace_add_setting_page');
 
