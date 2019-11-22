@@ -3,12 +3,12 @@
 Plugin Name: WPReplace
 Plugin URI: https://www.laobuluo.com/2693.html
 Description: WordPress实现可视化替换文章内容、标题，评论昵称和评论内容字符。站长互助QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>
-Version: 1.0
+Version: 1.1
 Author: 老部落（By:老赵）
 Author URI: https://www.laobuluo.com
 */
 
-define('WPReplace_INDEXFILE', 'WPReplace/index.php');
+define('WPReplace_INDEXFILE', 'wpreplace/index.php');
 
 add_action('admin_menu', 'wprelace_add_setting_page');
 
@@ -51,6 +51,21 @@ function wprelace_setting_page() {
 					"UPDATE {$wpdb->prefix}comments SET `comment_content` = REPLACE( `comment_content`, '{$originalContent}', '{$newContent}');"
 				);
 				break;
+            case 4:
+                # 评论用户邮箱和网址替换
+                $result1 = $wpdb->query(
+                    "UPDATE {$wpdb->prefix}comments SET `comment_author_email` = REPLACE( `comment_author_email`, '{$originalContent}', '{$newContent}');"
+                );
+                $result2 = $wpdb->query(
+                    "UPDATE {$wpdb->prefix}comments SET `comment_author_url` = REPLACE( `comment_author_url`, '{$originalContent}', '{$newContent}');"
+                );
+                break;
+            case 5:
+                # 文章摘要内容替换
+                $result = $wpdb->query(
+                    "UPDATE {$wpdb->prefix}posts SET `post_excerpt` = REPLACE( `post_excerpt`, '{$originalContent}', '{$newContent}');"
+                );
+                break;
 		}
 		?>
         <div class="updated"><p>替换完成!!!</p></div>
@@ -121,6 +136,8 @@ function wprelace_setting_page() {
                             <option value="1">文章内容文字/字符替换</option>
                             <option value="2">文章标题/字符替换</option>
                             <option value="3">评论用户昵称/内容字符替换</option>
+                            <option value="4">评论用户邮箱/网址替换</option>
+                            <option value="5">文章摘要批量替换</option>
                         </select>
                     </td>
                 </tr>

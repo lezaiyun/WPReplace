@@ -4,8 +4,8 @@ Contributors: laobuluo
 Donate link: https://www.laobuluo.com/donate/
 Tags:WordPress替换,字符替换,标题文章替换
 Requires at least: 4.5.0
-Tested up to: 5.2.2
-Stable tag: 1.0
+Tested up to: 5.3
+Stable tag: 1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,6 +53,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * 3. 可以增加空格替换字符
 * 4. 完成基本的内容、标题、评论中字符的替换，后续会增加其他必备功能。
 
+= 1.1 =
+* 1. 调试支持WordPress5.3正式版
+* 2. 新增支持评论者邮箱和网址的替换
+* 3. 新增支持内容摘要的文字和字符替换
 
 == Upgrade Notice ==
 * 
