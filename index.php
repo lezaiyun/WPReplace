@@ -1,9 +1,9 @@
 <?php
 /**
-Plugin Name: WPReplace
+Plugin Name: WPReplace内容字符替换插件
 Plugin URI: https://www.laobuluo.com/2693.html
 Description: WordPress实现可视化替换文章内容、标题，评论昵称和评论内容字符。站长互助QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>
-Version: 1.1
+Version: 1.3.1
 Author: 老部落（By:老赵）
 Author URI: https://www.laobuluo.com
 */
@@ -14,7 +14,7 @@ add_action('admin_menu', 'wprelace_add_setting_page');
 
 
 function wprelace_add_setting_page() {
-	add_menu_page('WPRelace设置', 'WPRelace设置', 'manage_options', __FILE__, 'wprelace_setting_page');
+	Add_management_page('WPRelace设置', 'WPRelace设置', 'manage_options', __FILE__, 'wprelace_setting_page');
 }
 
 
@@ -68,48 +68,27 @@ function wprelace_setting_page() {
                 break;
 		}
 		?>
-        <div class="updated"><p>替换完成!!!</p></div>
+       <div class="notice notice-success settings-error is-dismissible"><p><strong>替换完成。</strong></p></div>
 
 		<?php
 	}
 	?>
 
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-
-        table, td, th {border: 1px solid #cccccc;padding:5px;}
-        .buttoncss {background-color: #4CAF50;
-            border: none;cursor:pointer;
-            color: white;
-            padding: 15px 22px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;border-radius: 5px;
-            font-size: 12px;font-weight: bold;
-        }
-        .buttoncss:hover {
-            background-color: #008CBA;
-            color: white;
-        }
-        input,select{border: 1px solid #ccc; padding: 5px 0px; border-radius: 3px; padding-left:5px;}
-    </style>
-
-    <div style="margin:5px;">
-        <h2>WPReplace - WordPress内容字符替换插件</h2>
-        <hr/>
+      <div class="wrap">
+        <h1 class="wp-heading-inline">WPReplace - WordPress内容字符替换插件</h1><a href="https://www.laobuluo.com/2693.html" target="_blank"class="page-title-action">插件介绍</a>
+    <hr class="wp-header-end">
+        
             <p>WPReplace插件，我们可以快速后台可视化替换WordPress文章内容、标题，评论昵称、内容字符，快速帮助迁移WordPress网站内容静态文件或者是字符替换功能。</p>
-        <p>插件网站： <a href="https://www.laobuluo.com" target="_blank">老部落</a> / <a href="https://www.laobuluo.com/2693.html" target="_blank">WPReplace插件发布页面地址</a>  / 站长创业交流QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>（宗旨：多做事，少说话）</p>
-        <p>推荐文章： <a href="https://www.laobuluo.com/2113.html" target="_blank">新人建站常用的虚拟主机/云服务器 常用主机商选择建议</a></p>   
+        <p>快速导航： <a href="https://www.laobuluo.com/2113.html" target="_blank"><font color="red">新人建站常用的虚拟主机/云服务器</font></a> / 站长QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>（交流建站和运营） / 公众号：QQ69377078（插件反馈）</p>
+      
       <hr/>
-      <p><font color="red"> <b>！！！！ 强烈提醒/建议：使用替换数据库插件之前请先自行【备份网站数据库】 ！！！！</b></font></p>
+      
         <form action="<?php echo wp_nonce_url('./admin.php?page=' . WPReplace_INDEXFILE); ?>" name="wpreplaceform" method="post">
-            <table>
+         <table class="form-table">
                 <tr>
-                    <td style="text-align:right;">
-                        <b>目标内容：</b>
-                    </td>
+                    <th scope="row">
+                    目标内容
+                </th>
                     <td>
                         <input type="text" name="originalContent" value="" size="50"
                                placeholder="输入你需要替换的目标内容"/>
@@ -118,9 +97,9 @@ function wprelace_setting_page() {
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align:right;">
-                        <b>替换内容：</b>
-                    </td>
+                    <th scope="row">
+                   替换内容
+                </th>
                     <td>
                         <input type="text" name="newContent" value="" size="50"
                                placeholder="输入你需要替换后内容"/>
@@ -128,9 +107,9 @@ function wprelace_setting_page() {
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align:right;">
-                        <b>替换项目选择器：</b>
-                    </td>
+                     <th scope="row">
+                   替换项目选择器
+                </th>
                     <td>
                         <select name="replaceSelector" required style="width:180px;">
                             <option value="1">文章内容文字/字符替换</option>
@@ -146,9 +125,14 @@ function wprelace_setting_page() {
                     <th>
 
                     </th>
-                    <td><input type="submit" name="submit" value="执行替换字符操作" class="buttoncss" /></td>
+                    <td><input type="submit" name="submit" value="执行替换" class="button button-primary" /></td>
                 </tr>
             </table>
+            <hr>
+        <p><strong>注意事项</strong></p>
+        <p>1. 不熟悉的用户建议备份数据库，确保错误后可以恢复</p>
+        <p>2. 根据需要替换对象在选择器选择对象</p>
+        
 
         </form>
 

@@ -1,11 +1,11 @@
-=== WPReplace ===
+=== WPReplace内容字符替换插件===
 
 Contributors: laobuluo
 Donate link: https://www.laobuluo.com/donate/
 Tags:WordPress替换,字符替换,标题文章替换
 Requires at least: 4.5.0
-Tested up to: 5.3
-Stable tag: 1.1
+Tested up to: 5.4
+Stable tag: 1.3.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * 1. 调试支持WordPress5.3正式版
 * 2. 新增支持评论者邮箱和网址的替换
 * 3. 新增支持内容摘要的文字和字符替换
+
+= 1.2 =
+* 1. 重新检测支持最新版本WordPress5.3.3
+
+= 1.3.1 =
+* 1. 支持最新版WordPress5.4版本
+* 2. 重构前端界面，采用WP自带样式
+
 
 == Upgrade Notice ==
 * 
